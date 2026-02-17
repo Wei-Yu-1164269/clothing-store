@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Product</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="admin-title">Add Product</h1>
+
+      <div class="center">
+        <a href="{{ url_for('index') }}" class="btn-secondary">
+          Back to Admin
+        </a>
+      </div>
+
+      <div class="card">
+        <form action="/product" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" />
+          </div>
+
+          <div class="form-group">
+            <label>Price</label>
+            <input type="number" step="0.01" name="price" required />
+          </div>
+
+          <div class="form-group">
+            <label>Sizes</label>
+
+            <div class="checkbox-row">
+              <label class="checkbox-item">
+                <input type="checkbox" name="sizes" value="1" /> S
+              </label>
+
+              <label class="checkbox-item">
+                <input type="checkbox" name="sizes" value="2" /> M
+              </label>
+
+              <label class="checkbox-item">
+                <input type="checkbox" name="sizes" value="4" /> L
+              </label>
+            </div>
+
+            <div class="hint">Select one or more sizes</div>
+          </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input type="file" name="image" accept=".png,.jpg,.jpeg,.gif" />
+          </div>
+
+          <button type="submit" class="btn-primary">Create Product</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

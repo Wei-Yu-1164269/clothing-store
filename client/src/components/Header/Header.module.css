@@ -1,0 +1,61 @@
+.header {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.cartBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cartBtn:hover {
+  text-decoration: underline;
+}
+
+.cartPanel {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px 14px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+/* ✅ 让 dropdown 的“对齐参照物”变成跟 header inner 一样的容器 */
+.panelWrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+/* ✅ 在容器内右对齐 */
+.cartPanel {
+  position: absolute;
+  right: 0;
+  top: 56px; /* 需要你按 header 高度微调 */
+  width: min(420px, calc(100vw - 48px));
+}

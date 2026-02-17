@@ -1,0 +1,51 @@
+.wrap {
+  margin-top: 18px;
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #333;
+}
+
+.required {
+  color: #c00;
+  font-weight: 700;
+}
+
+.error {
+  margin-left: 10px;
+  color: #c00;
+  font-size: 12px;
+}
+
+.btnRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sizeBtn {
+  min-width: 44px;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sizeBtn:hover {
+  background: #f6f6f6;
+}
+
+.active {
+  border-color: #111;
+}

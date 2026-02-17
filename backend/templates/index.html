@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MoustacheRepublic Store Admin</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+  </head>
+
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="flash-container" id="flashContainer">
+      {% for category, message in messages %}
+      <div class="flash-message flash-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <div class="container">
+      <h1 class="admin-title">MoustacheRepublic Store Admin</h1>
+
+      <div class="center">
+        <a href="{{ url_for('add_product_page') }}" class="btn-primary"
+          >Add Product</a
+        >
+      </div>
+
+      <div class="table-wrap">
+        {% if products|length == 0 %}
+        <div class="empty">No products found.</div>
+        {% else %}
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Image URL</th>
+              <th>Sizes</th>
+              <th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for product in products %}
+            <tr>
+              <td class="mono">{{ product.id }}</td>
+              <td class="strong">{{ product.title }}</td>
+              <td class="muted">{{ product.description }}</td>
+
+              <td>
+                {% if product.imageurl %}
+                <a href="{{ product.imageurl }}" target="_blank">View</a>
+                {% else %}
+                <span class="muted">None</span>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if product.sizes and product.sizes|length > 0 %} {{
+                product.sizes|join(", ") }} {% else %}
+                <span class="muted">None</span>
+                {% endif %}
+              </td>
+
+              <td class="col-actions">
+                <form
+                  method="post"
+                  action="{{ url_for('delete_product', pid=product.id) }}"
+                  onsubmit="
+                    return confirm(
+                      'Delete this product? This will also delete its sizes and image file.',
+                    );
+                  "
+                >
+                  <button type="submit" class="btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+    </div>
+
+    <script>
+      setTimeout(() => {
+        const el = document.getElementById("flashContainer");
+        if (!el) return;
+
+        el.classList.add("flash-hide");
+        setTimeout(() => el.remove(), 500);
+      }, 3000);
+    </script>
+  </body>
+</html>
