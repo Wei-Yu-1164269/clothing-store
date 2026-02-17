@@ -13,10 +13,10 @@ echo [START] Launching backend and client...
 echo Repo root: %ROOT%
 echo ==================================================
 
-REM --- 启动后端 ---
+REM --- start backend ---
 start "MYAPP_BACKEND_WINDOW" /D "%ROOT%\backend" cmd /k "title MYAPP_BACKEND_WINDOW && (if exist .venv\Scripts\activate.bat call .venv\Scripts\activate.bat) && python app.py"
 
-REM --- 启动前端 ---
+REM --- start client ---
 start "MYAPP_CLIENT_WINDOW" /D "%ROOT%\client" cmd /k "title MYAPP_CLIENT_WINDOW && npm run dev"
 
 echo.

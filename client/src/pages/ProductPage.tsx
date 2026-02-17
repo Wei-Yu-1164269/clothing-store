@@ -28,6 +28,8 @@ export default function ProductPage() {
 
       try {
         const data = await fetchProduct(1);
+        // test code
+        // const data = await fetchProduct(2);
         if (cancelled) return;
         setProduct(data);
         setState("success");
