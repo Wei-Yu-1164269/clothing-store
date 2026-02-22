@@ -1,0 +1,23 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - ./backend/app.db:/app/app.db
+    environment:
+      - FLASK_ENV=development
+
+  web:
+    build: ./client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      # 浏览器从宿主机访问后端：最简单、最不容易踩坑
+      - VITE_API_BASE_URL=http://localhost:5000
+    depends_on:
+      - api
